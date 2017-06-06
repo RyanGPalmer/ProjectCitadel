@@ -2,11 +2,11 @@
 ### Vicinity Concepts
 *Fully-featured action role-playing game set in a dismal post-apocalyptic future*
 
-**Genre:** Action Role-Playing Game, 3rd-Person *(STC)*
-**Target Audience:** M for Mature
-**Controls:** Mouse & Keyboard, or Controller
-**Thematic Setting:** Post-Apocalyptic Earth/Underground
-**Tech Stack:** Unity 5.x, Blender, Photoshop, Ableton Live, Audacity
+**Genre:** Action Role-Playing Game, 3rd-Person *(STC)*  
+**Target Audience:** M for Mature  
+**Controls:** Mouse & Keyboard, or Controller  
+**Thematic Setting:** Post-Apocalyptic Earth/Underground  
+**Tech Stack:** Unity 5.x, Blender, Photoshop, Ableton Live, Audacity  
 **Platform:** PC (Steam)
 
 **Game Moment:** Your acquaintance, an old engineer and weaponsmith, has asked you to retrieve his last experiment from the ruins of a nearby town. He claims it is a device capable of manifesting a blade out of pure energy. Enter the ruins, locate the device, and try not to die in the process.
@@ -23,12 +23,12 @@ Since then, we humans have been clinging to life. A decade of fervent emotion an
 
 Your chapter begins on the day of the death of Benjamin Caine. With the benevolent leader of the human species gone, the delicate balance has been disrupted. The conflict between the Senshi and the Serva is at risk of boiling over. A new leader must emerge to mend the division, and unite us in a common mission. Everyone wants to survive, but is that enough? Will we simply exist, or will we persist? The shape of our future hangs in the balance.
 
-**Core Player Experience:** Vulnerable, survival, strategic
-**Central Theme:** Adaptation, metamorphosis of humanity
-**Design Pillar:** Willpower system
-**Anticipated Remarkability:** Memorable soundtrack, emotional story
-**Anticipated Steam Early Access Launch date:** Q1 2019 *(STC)*
-**Comparative Products:** Fallout 3 & 4, Mad Max (Movie), Metro 2033, The Last of Us
+**Core Player Experience:** Vulnerable, survival, strategic  
+**Central Theme:** Adaptation, metamorphosis of humanity  
+**Design Pillar:** Willpower system  
+**Anticipated Remarkability:** Memorable soundtrack, emotional story  
+**Anticipated Steam Early Access Launch date:** Q1 2019 *(STC)*  
+**Comparative Products:** Fallout 3 & 4, Mad Max (Movie), Metro 2033, The Last of Us  
 **Feature Development Priorities:**
 * Real-time combat
 * Upgradeable character stats and abilities
