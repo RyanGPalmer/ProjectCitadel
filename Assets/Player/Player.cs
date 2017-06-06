@@ -8,11 +8,13 @@ public class Player : MonoBehaviour
 	[SerializeField] float targetableDistance = 20f;
 	[SerializeField] float attackRange = 2f;
 	[SerializeField] float attackDamage = 20f;
+	[SerializeField] float attackCoolDown = 1f;
 
 	FreeLookCam cam;
 	GameObject enemyTarget;
 	int enemyTargetIndex = 0;
 	List<GameObject> targetableEnemies = new List<GameObject>();
+	float lastAttackTime = 0f;
 
 	private void Awake()
 	{
@@ -39,6 +41,10 @@ public class Player : MonoBehaviour
 
 	void Attack()
 	{
+		// Ensure cooldown has elapsed
+		if (Time.time - lastAttackTime < attackCoolDown)
+			return;
+
 		if (enemyTarget)
 		{
 			var distance = Vector3.Distance(transform.position, enemyTarget.transform.position);
@@ -48,6 +54,8 @@ public class Player : MonoBehaviour
 				if (enemyHealth)
 				{
 					(enemyHealth as IDamageable).TakeDamage(attackDamage);
+					print("Attacked enemy " + enemyTarget.name);
+					lastAttackTime = Time.time;
 				}
 			}
 		}

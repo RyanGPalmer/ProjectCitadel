@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 {
 	//[SerializeField] float meleeDamage = 10f;
 	[SerializeField] float rangedDamage = 10f;
+	[SerializeField] float attackCoolDown = 1f;
 	[SerializeField] float chaseRadius = 8f;
 	[SerializeField] float attackRadius = 3f;
 	[SerializeField] Projectile projectile;
@@ -59,13 +60,13 @@ public class Enemy : MonoBehaviour
 
 	void EndChase()
 	{
-		ai.SetTarget(null);aaa
+		ai.SetTarget(null);
 	}
 
 	void BeginAttack()
 	{
 		isAttacking = true;
-		InvokeRepeating("FireProjectile", 0f, 1f);
+		InvokeRepeating("FireProjectile", 0f, attackCoolDown);
 	}
 
 	void EndAttack()
