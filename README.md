@@ -1,6 +1,7 @@
 # ProjectCitadel
-### Vicinity Concepts
-*Fully-featured action role-playing game set in a dismal post-apocalyptic future*
+#### *Fully-featured action role-playing game set in a dismal post-apocalyptic future*
+
+![alt text](https://github.com/RyanGPalmer/ProjectCitadel/blob/master/Images/projectcitadel.png "Concept Art 1")
 
 **Genre:** Action Role-Playing Game, 3rd-Person *(STC)*  
 **Target Audience:** M for Mature  
