@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
 	SphereCollider col = null;
 	float damage = 10f;
 	GameObject ignoredObject = null;
+	Vector3 prevPos = Vector3.zero;
 
 	// Use this for initialization
 	void Awake()
@@ -21,6 +22,7 @@ public class Projectile : MonoBehaviour
 	void Start()
 	{
 		Invoke("Expire", lifeSpan);
+		prevPos = transform.position;
 	}
 
 	public void SetDamage(float amount)
@@ -33,16 +35,27 @@ public class Projectile : MonoBehaviour
 		ignoredObject = obj;
 	}
 
-	void OnTriggerEnter(Collider collider)
+	void LateUpdate()
 	{
-		if (collider.gameObject == ignoredObject)
-			return;
+		// Here we will raycast the distance traveled since the last frame. This works better than continuous dynamic
+		// collision for projectiles, but may fail to detect collision with another very fast-moving object.
+		Vector3 direction = (prevPos - transform.position).normalized;
+		float distance = Vector3.Distance(prevPos, transform.position);
+		var hits = Physics.RaycastAll(transform.position, direction, distance);
 
-		var damageableComponent = collider.GetComponent(typeof(IDamageable)); // Not casting here because GameObject is a nullable type which allows for the conditional statement below
-		if (damageableComponent)
+		foreach (RaycastHit hit in hits)
 		{
-			(damageableComponent as IDamageable).TakeDamage(damage); // Here we cast
+			if (hit.collider.gameObject == ignoredObject)
+				continue;
+
+			var damageable = hit.collider.GetComponent(typeof(IDamageable));
+			if (damageable)
+			{
+				(damageable as IDamageable).TakeDamage(damage);
+			}
 		}
+		
+		prevPos = transform.position;
 	}
 
 	// Called when projectile has exceeded its life span
