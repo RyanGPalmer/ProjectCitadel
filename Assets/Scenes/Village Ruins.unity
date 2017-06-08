@@ -9736,15 +9736,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 465900, guid: c4ad67a7cd19345449ac3646963ee9aa, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -145.83
+      value: -155.688
       objectReference: {fileID: 0}
     - target: {fileID: 465900, guid: c4ad67a7cd19345449ac3646963ee9aa, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 101.61143
+      value: 101.565
       objectReference: {fileID: 0}
     - target: {fileID: 465900, guid: c4ad67a7cd19345449ac3646963ee9aa, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -296.56
+      value: -296.935
       objectReference: {fileID: 0}
     - target: {fileID: 465900, guid: c4ad67a7cd19345449ac3646963ee9aa, type: 2}
       propertyPath: m_LocalRotation.x
