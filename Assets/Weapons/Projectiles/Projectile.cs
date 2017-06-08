@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
 
 	SphereCollider col = null;
 	float damage = 10f;
+	GameObject ignoredObject = null;
 
 	// Use this for initialization
 	void Awake()
@@ -27,8 +28,16 @@ public class Projectile : MonoBehaviour
 		damage = amount;
 	}
 
+	public void IgnoreObject(GameObject obj)
+	{
+		ignoredObject = obj;
+	}
+
 	void OnTriggerEnter(Collider collider)
 	{
+		if (collider.gameObject == ignoredObject)
+			return;
+
 		var damageableComponent = collider.GetComponent(typeof(IDamageable)); // Not casting here because GameObject is a nullable type which allows for the conditional statement below
 		if (damageableComponent)
 		{

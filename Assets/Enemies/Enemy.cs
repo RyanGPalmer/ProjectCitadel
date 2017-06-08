@@ -80,6 +80,7 @@ public class Enemy : MonoBehaviour
 		var launchedProjectile = Instantiate(projectile, projectileSocket.transform.position, Quaternion.identity);
 		var speed = launchedProjectile.speed;
 		var direction = ((player.transform.position + aimOffset) - projectileSocket.transform.position).normalized;
+		launchedProjectile.IgnoreObject(gameObject);
 		launchedProjectile.SetDamage(rangedDamage);
 		launchedProjectile.GetComponent<Rigidbody>().velocity = direction * speed;
 	}
