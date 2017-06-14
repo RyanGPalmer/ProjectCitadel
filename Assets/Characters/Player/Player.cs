@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
 	[SerializeField] float attackRange = 2f;
 	[SerializeField] float attackDamage = 20f;
 	[SerializeField] float attackCoolDown = 1f;
+	[SerializeField] Transform weaponSocket;
+	[SerializeField] Weapon currentWeapon;
 
 	FreeLookCam cam;
 	GameObject enemyTarget;
@@ -37,6 +39,11 @@ public class Player : MonoBehaviour
 		{
 			Attack();
 		}
+	}
+
+	void SpawnCurrentWeapon()
+	{
+		var spawnedWeapon = Instantiate(currentWeapon.GetPrefab(), weaponSocket);
 	}
 
 	void Attack()

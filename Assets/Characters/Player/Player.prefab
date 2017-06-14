@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4217698453488796}
   m_Layer: 0
-  m_Name: Melee Socket
+  m_Name: Weapon Socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -401,23 +401,6 @@ GameObject:
   - component: {fileID: 4504929660812188}
   m_Layer: 0
   m_Name: Bip001 Spine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1382817837208074
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4452484773694746}
-  - component: {fileID: 33321093003038400}
-  - component: {fileID: 23488562826253338}
-  m_Layer: 0
-  m_Name: Katana_Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,21 +872,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1907468726789380
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4607544099166146}
-  m_Layer: 0
-  m_Name: Katana
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1908395545415754
 GameObject:
   m_ObjectHideFlags: 1
@@ -1087,15 +1055,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149790}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.00000053644175}
+  m_LocalPosition: {x: 14.25, y: 2, z: 4.37}
   m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
   m_Children:
   - {fileID: 4666645233813500}
   - {fileID: 4484788962011378}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180.00002, z: 0}
 --- !u!4 &4190328555917258
 Transform:
   m_ObjectHideFlags: 1
@@ -1160,8 +1128,7 @@ Transform:
   m_LocalRotation: {x: -0.612711, y: 0.7492795, z: 0.16411015, w: 0.19035068}
   m_LocalPosition: {x: -0.097, y: -0.048, z: 0.217}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4607544099166146}
+  m_Children: []
   m_Father: {fileID: 4048243501058438}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -151.368, y: -5.5009766, z: 102.856995}
@@ -1289,19 +1256,6 @@ Transform:
   m_Children:
   - {fileID: 4575243652567394}
   m_Father: {fileID: 4051013876255082}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4452484773694746
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1382817837208074}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4607544099166146}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4484788962011378
@@ -1443,20 +1397,6 @@ Transform:
   - {fileID: 4742572001269278}
   - {fileID: 4793151985276226}
   m_Father: {fileID: 4433242883170082}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4607544099166146
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1907468726789380}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
-  m_Children:
-  - {fileID: 4452484773694746}
-  m_Father: {fileID: 4217698453488796}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4611227850804056
@@ -1780,45 +1720,6 @@ Transform:
   m_Father: {fileID: 4788140929296524}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23488562826253338
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1382817837208074}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: b414ef5e7a98ffe46ad1fd0d35fcb3d6, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &33321093003038400
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1382817837208074}
-  m_Mesh: {fileID: 4300000, guid: a9e8b0c84ce4b2749aca0e63a676e439, type: 3}
 --- !u!114 &114345023962379566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1858,6 +1759,8 @@ MonoBehaviour:
   attackRange: 2
   attackDamage: 25
   attackCoolDown: 0.5
+  weaponSocket: {fileID: 4217698453488796}
+  currentWeapon: {fileID: 11400000, guid: 4bceb8541926124448d0b375638d6906, type: 2}
 --- !u!137 &137208951059613956
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
