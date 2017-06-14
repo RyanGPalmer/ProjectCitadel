@@ -23,6 +23,11 @@ public class Player : MonoBehaviour
 		cam = Camera.main.GetComponentInParent<FreeLookCam>();
 	}
 
+	private void Start()
+	{
+		SpawnCurrentWeapon();
+	}
+
 	void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.Tab))
@@ -44,6 +49,8 @@ public class Player : MonoBehaviour
 	void SpawnCurrentWeapon()
 	{
 		var spawnedWeapon = Instantiate(currentWeapon.GetPrefab(), weaponSocket);
+		spawnedWeapon.transform.localPosition = currentWeapon.gripTransform.localPosition;
+		spawnedWeapon.transform.localRotation = currentWeapon.gripTransform.localRotation;
 	}
 
 	void Attack()
