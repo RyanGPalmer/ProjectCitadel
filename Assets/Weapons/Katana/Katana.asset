@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e570b5c36daf43e438b7512af1c3a21e, type: 3}
   m_Name: Katana
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 149494, guid: 79aa677bbe2b9a74b91bad978448ce88, type: 2}
+  gripTransform: {fileID: 4555527066066070, guid: 55d735d6ea153af46bf95b02758c0551,
+    type: 2}
+  weaponPrefab: {fileID: 1598226593974798, guid: c3d427f1a48fdd542a0741be12eaac55,
+    type: 2}
   attackAnimation: {fileID: 0}
