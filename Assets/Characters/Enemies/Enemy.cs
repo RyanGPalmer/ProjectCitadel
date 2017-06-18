@@ -6,7 +6,6 @@ using UnityStandardAssets.Characters.ThirdPerson;
 
 public class Enemy : MonoBehaviour
 {
-	//[SerializeField] float meleeDamage = 10f;
 	[SerializeField] float rangedDamage = 10f;
 	[SerializeField] float attackCoolDown = 1f;
 	[SerializeField] float chaseRadius = 8f;
@@ -78,9 +77,9 @@ public class Enemy : MonoBehaviour
 	void FireProjectile()
 	{
 		var launchedProjectile = Instantiate(projectile, projectileSocket.transform.position, Quaternion.identity);
-		var speed = launchedProjectile.speed;
+		var speed = launchedProjectile.GetSpeed();
 		var direction = ((player.transform.position + aimOffset) - projectileSocket.transform.position).normalized;
-		launchedProjectile.IgnoreObject(gameObject);
+		launchedProjectile.SetOwner(gameObject);
 		launchedProjectile.SetDamage(rangedDamage);
 		launchedProjectile.GetComponent<Rigidbody>().velocity = direction * speed;
 	}
