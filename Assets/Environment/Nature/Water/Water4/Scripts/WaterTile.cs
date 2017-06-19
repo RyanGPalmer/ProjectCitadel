@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace UnityStandardAssets.Water
+namespace RPG.Environment
 {
     [ExecuteInEditMode]
     public class WaterTile : MonoBehaviour

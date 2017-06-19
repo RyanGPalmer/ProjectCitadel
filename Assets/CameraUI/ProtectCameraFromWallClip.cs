@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace UnityStandardAssets.Cameras
+namespace RPG.CameraUI
 {
     public class ProtectCameraFromWallClip : MonoBehaviour
     {
