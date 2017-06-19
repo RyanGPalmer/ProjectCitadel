@@ -1,125 +1,129 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityStandardAssets.Cameras;
+using RPG.CameraUI;
+using RPG.Weapons;
+using RPG.Core;
 
-public class Player : MonoBehaviour
+namespace RPG.Characters
 {
-	[SerializeField] float targetableDistance = 20f;
-	[SerializeField] float attackRange = 2f;
-	[SerializeField] float attackDamage = 20f;
-	[SerializeField] float attackCoolDown = 1f;
-	[SerializeField] Transform weaponSocket;
-	[SerializeField] Weapon currentWeapon;
-
-	FreeLookCam cam;
-	GameObject enemyTarget;
-	int enemyTargetIndex = 0;
-	List<GameObject> targetableEnemies = new List<GameObject>();
-	float lastAttackTime = 0f;
-
-	private void Awake()
+	public class Player : MonoBehaviour
 	{
-		cam = Camera.main.GetComponentInParent<FreeLookCam>();
-	}
+		[SerializeField] float targetableDistance = 20f;
+		[SerializeField] float attackRange = 2f;
+		[SerializeField] float attackDamage = 20f;
+		[SerializeField] float attackCoolDown = 1f;
+		[SerializeField] Transform weaponSocket;
+		[SerializeField] Weapon currentWeapon;
 
-	private void Start()
-	{
-		SpawnCurrentWeapon();
-	}
+		FreeLookCam cam;
+		GameObject enemyTarget;
+		int enemyTargetIndex = 0;
+		List<GameObject> targetableEnemies = new List<GameObject>();
+		float lastAttackTime = 0f;
 
-	void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.Tab))
+		private void Awake()
 		{
-			CycleEnemyTargets();
+			cam = Camera.main.GetComponentInParent<FreeLookCam>();
 		}
 
-		if (Input.GetKeyDown(KeyCode.Escape))
+		private void Start()
 		{
-			ClearTarget();
+			SpawnCurrentWeapon();
 		}
 
-		if (Input.GetButtonDown("Fire1"))
+		void Update()
 		{
-			Attack();
-		}
-	}
-
-	void SpawnCurrentWeapon()
-	{
-		var spawnedWeapon = Instantiate(currentWeapon.GetPrefab(), weaponSocket);
-		spawnedWeapon.transform.localPosition = currentWeapon.gripTransform.localPosition;
-		spawnedWeapon.transform.localRotation = currentWeapon.gripTransform.localRotation;
-	}
-
-	void Attack()
-	{
-		// Ensure cooldown has elapsed
-		if (Time.time - lastAttackTime < attackCoolDown)
-			return;
-
-		if (enemyTarget)
-		{
-			var distance = Vector3.Distance(transform.position, enemyTarget.transform.position);
-			if (distance <= attackRange)
+			if (Input.GetKeyDown(KeyCode.Tab))
 			{
-				var enemyHealth = enemyTarget.GetComponent<Health>();
-				if (enemyHealth)
+				CycleEnemyTargets();
+			}
+
+			if (Input.GetKeyDown(KeyCode.Escape))
+			{
+				ClearTarget();
+			}
+
+			if (Input.GetButtonDown("Fire1"))
+			{
+				Attack();
+			}
+		}
+
+		void SpawnCurrentWeapon()
+		{
+			var spawnedWeapon = Instantiate(currentWeapon.GetPrefab(), weaponSocket);
+			spawnedWeapon.transform.localPosition = currentWeapon.gripTransform.localPosition;
+			spawnedWeapon.transform.localRotation = currentWeapon.gripTransform.localRotation;
+		}
+
+		void Attack()
+		{
+			// Ensure cooldown has elapsed
+			if (Time.time - lastAttackTime < attackCoolDown)
+				return;
+
+			if (enemyTarget)
+			{
+				var distance = Vector3.Distance(transform.position, enemyTarget.transform.position);
+				if (distance <= attackRange)
 				{
-					(enemyHealth as IDamageable).TakeDamage(attackDamage);
-					lastAttackTime = Time.time;
+					var enemyHealth = enemyTarget.GetComponent<Health>();
+					if (enemyHealth)
+					{
+						(enemyHealth as IDamageable).TakeDamage(attackDamage);
+						lastAttackTime = Time.time;
+					}
 				}
 			}
 		}
-	}
 
-	void CycleEnemyTargets()
-	{
-		RefreshTargetableList();
-
-		// Only executes if we have enemies in range
-		if (targetableEnemies.Count > 0)
+		void CycleEnemyTargets()
 		{
-			enemyTargetIndex++;
+			RefreshTargetableList();
 
-			// Check if index is out of range after incrementing
-			if (enemyTargetIndex >= targetableEnemies.Count)
+			// Only executes if we have enemies in range
+			if (targetableEnemies.Count > 0)
 			{
-				// If so, reset to beginning
-				enemyTargetIndex = 0;
-			}
+				enemyTargetIndex++;
 
-			enemyTarget = targetableEnemies[enemyTargetIndex];
-			cam.SetLookTarget(enemyTarget.transform);
-		}
-	}
+				// Check if index is out of range after incrementing
+				if (enemyTargetIndex >= targetableEnemies.Count)
+				{
+					// If so, reset to beginning
+					enemyTargetIndex = 0;
+				}
 
-	void RefreshTargetableList()
-	{
-		targetableEnemies = new List<GameObject>(); // Clear list
-		GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-		foreach (GameObject enemy in enemies)
-		{
-			float distance = Vector3.Distance(transform.position, enemy.transform.position);
-			if (distance <= targetableDistance)
-			{
-				targetableEnemies.Add(enemy);
+				enemyTarget = targetableEnemies[enemyTargetIndex];
+				cam.SetLookTarget(enemyTarget.transform);
 			}
 		}
 
-		// Remove currently targeted enemy from list to ensure target will be different
-		if (targetableEnemies.Count > 1 && enemyTarget != null)
+		void RefreshTargetableList()
 		{
-			targetableEnemies.Remove(enemyTarget);
-		}
-	}
+			targetableEnemies = new List<GameObject>(); // Clear list
+			GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-	void ClearTarget()
-	{
-		enemyTarget = null;
-		enemyTargetIndex = 0;
-		cam.SetLookTarget(null);
+			foreach (GameObject enemy in enemies)
+			{
+				float distance = Vector3.Distance(transform.position, enemy.transform.position);
+				if (distance <= targetableDistance)
+				{
+					targetableEnemies.Add(enemy);
+				}
+			}
+
+			// Remove currently targeted enemy from list to ensure target will be different
+			if (targetableEnemies.Count > 1 && enemyTarget != null)
+			{
+				targetableEnemies.Remove(enemyTarget);
+			}
+		}
+
+		void ClearTarget()
+		{
+			enemyTarget = null;
+			enemyTargetIndex = 0;
+			cam.SetLookTarget(null);
+		}
 	}
 }
