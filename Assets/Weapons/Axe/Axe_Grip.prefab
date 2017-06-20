@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4555527066066070}
   m_Layer: 0
-  m_Name: Katana_Grip
+  m_Name: Axe_Grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,10 +32,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1936997512906360}
-  m_LocalRotation: {x: 0.73058736, y: -0.019903041, z: -0.6552263, w: 0.19111386}
-  m_LocalPosition: {x: 0.133, y: -0.098, z: -0.367}
+  m_LocalRotation: {x: 0.14655656, y: -0.6954484, z: 0.6984057, w: 0.08427541}
+  m_LocalPosition: {x: -0.02, y: 0.008, z: -0.296}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 165.33499, y: 85.951, z: 16.794998}
+  m_LocalEulerAnglesHint: {x: 84.94601, y: 96.685005, z: -102.122}

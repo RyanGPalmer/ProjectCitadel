@@ -1648,8 +1648,8 @@ MonoBehaviour:
   attackRange: 2
   attackDamage: 25
   attackCoolDown: 0.5
-  weaponSocket: {fileID: 0}
   currentWeapon: {fileID: 11400000, guid: 4bceb8541926124448d0b375638d6906, type: 2}
+  animatorOverride: {fileID: 22100000, guid: 09873f73a7e24af4c9421dfca5ac11f4, type: 2}
 --- !u!137 &137761456433178596
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

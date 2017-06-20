@@ -14,5 +14,13 @@ namespace RPG.Weapons
 		{
 			return weaponPrefab;
 		}
+
+		public AnimationClip GetAttackAnimation()
+		{
+			// Clear animation events in case asset packs include them, potentially causing bugs
+			attackAnimation.events = new AnimationEvent[0];
+
+			return attackAnimation;
+		}
 	}
 }

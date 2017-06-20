@@ -8,12 +8,14 @@ namespace RPG.Characters
 {
 	public class Player : MonoBehaviour
 	{
+		const string DEFAULT_ATTACK_ANIMATION = "DEFAULT_ATTACK";
+
 		[SerializeField] float targetableDistance = 20f;
 		[SerializeField] float attackRange = 2f;
 		[SerializeField] float attackDamage = 20f;
 		[SerializeField] float attackCoolDown = 1f;
-		[SerializeField] Transform weaponSocket;
 		[SerializeField] Weapon currentWeapon;
+		[SerializeField] AnimatorOverrideController animatorOverride;
 
 		FreeLookCam cam;
 		GameObject enemyTarget;
@@ -21,14 +23,23 @@ namespace RPG.Characters
 		List<GameObject> targetableEnemies = new List<GameObject>();
 		float lastAttackTime = 0f;
 
-		private void Awake()
+		void Start()
 		{
-			cam = Camera.main.GetComponentInParent<FreeLookCam>();
+			FindCamera();
+			OverrideAnimator();
+			SpawnCurrentWeapon();
 		}
 
-		private void Start()
+		void OverrideAnimator()
 		{
-			SpawnCurrentWeapon();
+			var animator = GetComponent<Animator>();
+			animator.runtimeAnimatorController = animatorOverride;
+			animatorOverride[DEFAULT_ATTACK_ANIMATION] = currentWeapon.GetAttackAnimation();
+		}
+
+		void FindCamera()
+		{
+			cam = Camera.main.GetComponentInParent<FreeLookCam>();
 		}
 
 		void Update()
@@ -51,7 +62,8 @@ namespace RPG.Characters
 
 		void SpawnCurrentWeapon()
 		{
-			var spawnedWeapon = Instantiate(currentWeapon.GetPrefab(), weaponSocket);
+			var mainHand = GetComponentInChildren<MainHand>().transform;
+			var spawnedWeapon = Instantiate(currentWeapon.GetPrefab(), mainHand);
 			spawnedWeapon.transform.localPosition = currentWeapon.gripTransform.localPosition;
 			spawnedWeapon.transform.localRotation = currentWeapon.gripTransform.localRotation;
 		}
@@ -61,6 +73,8 @@ namespace RPG.Characters
 			// Ensure cooldown has elapsed
 			if (Time.time - lastAttackTime < attackCoolDown)
 				return;
+
+			GetComponent<Animator>().SetTrigger("Attack");
 
 			if (enemyTarget)
 			{
