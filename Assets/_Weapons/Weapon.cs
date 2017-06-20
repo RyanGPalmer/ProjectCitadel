@@ -9,6 +9,8 @@ namespace RPG.Weapons
 
 		[SerializeField] GameObject weaponPrefab;
 		[SerializeField] AnimationClip attackAnimation;
+		[SerializeField] float attackCooldown = 2f;
+		[SerializeField] float attackRange = 1.5f;
 
 		public GameObject GetPrefab()
 		{
@@ -21,6 +23,16 @@ namespace RPG.Weapons
 			attackAnimation.events = new AnimationEvent[0];
 
 			return attackAnimation;
+		}
+
+		public float GetAttackCooldown()
+		{
+			return attackCooldown;
+		}
+
+		public float GetAttackRange()
+		{
+			return attackRange;
 		}
 	}
 }

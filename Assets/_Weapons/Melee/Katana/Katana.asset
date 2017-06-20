@@ -9,9 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e570b5c36daf43e438b7512af1c3a21e, type: 3}
-  m_Name: Axe
+  m_Name: Katana
   m_EditorClassIdentifier: 
-  gripTransform: {fileID: 4555527066066070, guid: 353d7f67545d759458b0fbb6447be775,
+  gripTransform: {fileID: 4555527066066070, guid: 55d735d6ea153af46bf95b02758c0551,
     type: 2}
-  weaponPrefab: {fileID: 103692, guid: a6f75ae2198bd1e47b95c317412b3ef3, type: 2}
-  attackAnimation: {fileID: 7400000, guid: 1fc94e9b71f1f5e4f97b6a0021007bf5, type: 3}
+  weaponPrefab: {fileID: 1598226593974798, guid: c3d427f1a48fdd542a0741be12eaac55,
+    type: 2}
+  attackAnimation: {fileID: 7400000, guid: 475796453e56ae447b098689c94bcfb5, type: 3}
+  attackCooldown: 1
+  attackRange: 1.5

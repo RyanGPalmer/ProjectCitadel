@@ -11,17 +11,15 @@ namespace RPG.Characters
 		const string DEFAULT_ATTACK_ANIMATION = "DEFAULT_ATTACK";
 
 		[SerializeField] float targetableDistance = 20f;
-		[SerializeField] float attackRange = 2f;
 		[SerializeField] float attackDamage = 20f;
-		[SerializeField] float attackCoolDown = 1f;
 		[SerializeField] Weapon currentWeapon;
 		[SerializeField] AnimatorOverrideController animatorOverride;
 
 		FreeLookCam cam;
 		GameObject enemyTarget;
-		int enemyTargetIndex = 0;
+		int enemyTargetIndex;
 		List<GameObject> targetableEnemies = new List<GameObject>();
-		float lastAttackTime = 0f;
+		float lastAttackTime = -100f;
 
 		void Start()
 		{
@@ -71,7 +69,7 @@ namespace RPG.Characters
 		void Attack()
 		{
 			// Ensure cooldown has elapsed
-			if (Time.time - lastAttackTime < attackCoolDown)
+			if (Time.time - lastAttackTime < currentWeapon.GetAttackCooldown())
 				return;
 
 			GetComponent<Animator>().SetTrigger("Attack");
@@ -79,16 +77,17 @@ namespace RPG.Characters
 			if (enemyTarget)
 			{
 				var distance = Vector3.Distance(transform.position, enemyTarget.transform.position);
-				if (distance <= attackRange)
+				if (distance <= currentWeapon.GetAttackRange())
 				{
 					var enemyHealth = enemyTarget.GetComponent<Health>();
 					if (enemyHealth)
 					{
 						(enemyHealth as IDamageable).TakeDamage(attackDamage);
-						lastAttackTime = Time.time;
 					}
 				}
 			}
+
+			lastAttackTime = Time.time;
 		}
 
 		void CycleEnemyTargets()
